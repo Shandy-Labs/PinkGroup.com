@@ -446,7 +446,7 @@
 </div>
 <div class="space-y-2" id="seblakFreePanel">
 <p class="text-[10px] text-gray-600">Toping akan dipilihkan oleh penjual. Daftar berikut hanya urutan pilihan toping, tanpa harga.</p>
-<ol class="grid grid-cols-2 gap-x-3 list-none text-[10px] text-gray-700 bg-white rounded-lg border border-pink-200 p-2"><li class="py-0.5">1. Telur</li><li class="py-0.5">2. Dumpling</li><li class="py-0.5">3. Chikuwa</li><li class="py-0.5">4. Twiser</li><li class="py-0.5">5. Kembang Cumi</li><li class="py-0.5">6. Sosis</li><li class="py-0.5">7. Sosis Bambu</li><li class="py-0.5">8. Sosis Salju</li><li class="py-0.5">9. Cocktail</li><li class="py-0.5">10. Jamur Enoki</li><li class="py-0.5">11. Jamur Kuping</li><li class="py-0.5">12. Tempura</li><li class="py-0.5">13. Otak-Otak</li><li class="py-0.5">14. Bakso</li><li class="py-0.5">15. Cuangki</li><li class="py-0.5">16. Cireng</li><li class="py-0.5">17. Cikur</li><li class="py-0.5">18. Makaroni</li><li class="py-0.5">19. Kerupuk</li><li class="py-0.5">20. Mie Kuning</li><li class="py-0.5">21. Bihun</li></ol>
+<ol class="grid grid-cols-2 gap-x-3 list-none text-[10px] text-gray-700 bg-white rounded-lg border border-pink-200 p-2"><li class="py-0.5">1. Telur</li><li class="py-0.5">2. Dumpling(habis)</li><li class="py-0.5">3. Chikuwa</li><li class="py-0.5">4. Twiser</li><li class="py-0.5">5. Kembang Cumi</li><li class="py-0.5">6. Sosis</li><li class="py-0.5">7. Sosis Bambu(Habis)</li><li class="py-0.5">8. Sosis Salju</li><li class="py-0.5">9. Cocktail</li><li class="py-0.5">10. Jamur Enoki</li><li class="py-0.5">11. Jamur Kuping</li><li class="py-0.5">12. Tempura</li><li class="py-0.5">13. Otak-Otak</li><li class="py-0.5">14. Bakso</li><li class="py-0.5">15. Cuangki(Habis)</li><li class="py-0.5">16. Cireng</li><li class="py-0.5">17. Cikur</li><li class="py-0.5">18. Makaroni</li><li class="py-0.5">19. Kerupuk</li><li class="py-0.5">20. Mie Kuning</li><li class="py-0.5">21. Bihun</li></ol>
 <div><label class="block font-bold text-pinky-800 text-[11px] mb-1">Nominal Seblak (Rp) — mulai 6.000:</label>
 <input class="w-full p-2 bg-white border border-pink-300 rounded-lg text-xs" id="seblakFreeAmount" min="6000" data-action-input="updateSeblakFree" placeholder="Masukkan nominal, minimal 6000" step="500" type="number"/></div>
 <div><label class="block font-bold text-pinky-800 text-[11px] mb-1">Catatan / Request Toping:</label>
@@ -463,7 +463,7 @@
 <button class="w-5 h-5 rounded bg-pinky-500 text-white font-bold" data-action-click="changeTopingQty" data-action-args-click="[&quot;Telur&quot;,1]" type="button">+</button>
 </div>
 </div>
-<div class="flex items-center justify-between gap-1 text-[10px] bg-white rounded-lg border border-pink-100 px-1.5 py-1">
+<div class="flex items-center justify-between gap-1 text-[10px] bg-white rounded-lg border border-pink-100 px-1.5 py-1" style="display: none;">
 <span class="font-medium">Dumpling <span class="text-pinky-600">(2.5k)</span></span>
 <div class="flex items-center gap-1">
 <button class="w-5 h-5 rounded bg-pink-100 text-pinky-700 font-bold" data-action-click="changeTopingQty" data-action-args-click="[&quot;Dumpling&quot;,-1]" type="button">-</button>
@@ -503,7 +503,7 @@
 <button class="w-5 h-5 rounded bg-pinky-500 text-white font-bold" data-action-click="changeTopingQty" data-action-args-click="[&quot;Sosis&quot;,1]" type="button">+</button>
 </div>
 </div>
-<div class="flex items-center justify-between gap-1 text-[10px] bg-white rounded-lg border border-pink-100 px-1.5 py-1">
+<div class="flex items-center justify-between gap-1 text-[10px] bg-white rounded-lg border border-pink-100 px-1.5 py-1" style="display: none;">
 <span class="font-medium">Sosis Bambu <span class="text-pinky-600">(2k)</span></span>
 <div class="flex items-center gap-1">
 <button class="w-5 h-5 rounded bg-pink-100 text-pinky-700 font-bold" data-action-click="changeTopingQty" data-action-args-click="[&quot;Sosis Bambu&quot;,-1]" type="button">-</button>
@@ -567,7 +567,7 @@
 <button class="w-5 h-5 rounded bg-pinky-500 text-white font-bold" data-action-click="changeTopingQty" data-action-args-click="[&quot;Bakso&quot;,1]" type="button">+</button>
 </div>
 </div>
-<div class="flex items-center justify-between gap-1 text-[10px] bg-white rounded-lg border border-pink-100 px-1.5 py-1">
+<div class="flex items-center justify-between gap-1 text-[10px] bg-white rounded-lg border border-pink-100 px-1.5 py-1" style="display: none;">
 <span class="font-medium">Cuangki <span class="text-pinky-600">(1k)</span></span>
 <div class="flex items-center gap-1">
 <button class="w-5 h-5 rounded bg-pink-100 text-pinky-700 font-bold" data-action-click="changeTopingQty" data-action-args-click="[&quot;Cuangki&quot;,-1]" type="button">-</button>
