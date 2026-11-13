@@ -204,16 +204,20 @@
                     });
                 }
             } else if (['c1', 'c2', 'c3'].includes(id)) {
+                // Pilihan ini adalah SAMBAL, bukan toping seblak.
                 // Satu pilihan sambal gratis; setiap pilihan tambahan dikenakan Rp1.000.
-                const selectedTopings = Array.from(
+                const selectedSambals = Array.from(
                     document.querySelectorAll(`input[name="toping-${id}"]:checked`)
                 ).map(input => input.value);
 
-                topings = selectedTopings;
-                if (selectedTopings.length > 1) {
-                    topingExtraCost = (selectedTopings.length - 1) * 1000;
+                // Rapikan nama sambal untuk rincian pesanan WhatsApp.
+                sambalText = selectedSambals
+                    .map(value => value === 'Sambal Geprek' ? 'Geprek' : value)
+                    .join(', ');
+
+                if (selectedSambals.length > 1) {
+                    topingExtraCost = (selectedSambals.length - 1) * 1000;
                 }
-                sambalText = selectedTopings.join(', ');
             }
 
             const card = document.querySelector(`[data-id="${id}"]`);
