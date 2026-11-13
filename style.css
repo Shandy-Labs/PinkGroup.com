@@ -1,0 +1,79 @@
+/*
+ * PINK GROUP — custom project styles
+ * Layout utility classes remain in the HTML and are provided by Tailwind CDN.
+ */
+:root {
+    color-scheme: light;
+}
+
+.brand-credit {
+    margin-top: 3px;
+    color: #e6004c;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    line-height: 1.2;
+}
+
+.menu-option-check {
+    padding: 9px 10px;
+    border: 1px solid #ffc9db;
+    border-radius: 12px;
+    background: rgba(255, 240, 246, 0.82);
+}
+
+.menu-option-label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #99002e;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.menu-option-label strong {
+    margin-left: 3px;
+    color: #e6004c;
+    font-weight: 800;
+}
+
+.menu-option-checkbox {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+    accent-color: #ff2e70;
+    cursor: pointer;
+}
+
+.menu-option-label:has(.menu-option-checkbox:focus-visible) {
+    outline: 2px solid #ff6696;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+
+/* Halaman cetak QR Web */
+.qr-print-page {
+    padding: 40px;
+    color: #222;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.qr-print-code {
+    margin: 20px auto;
+}
+
+.qr-print-note {
+    color: #666;
+    font-size: 12px;
+}
