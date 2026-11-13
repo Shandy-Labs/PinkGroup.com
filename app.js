@@ -687,7 +687,7 @@ function updateDeliverySubOptions() {
                           `${orderLines.join('\n')}\n\n` +
                           (manualQuote ? '*Mohon info total harga dan proses selanjutnya ya kak.*\n\n' : (totalPrice > 0 ? `*Total Tagihan: Rp ${totalPrice.toLocaleString('id-ID')}*\n\n` : '')) +
                           `${customerText}${deliveryText}${paymentText}${proofText}\n\n` +
-                          `Mohon segera diproses ya kak. Terima kasih! 💖`;
+                          `Mohon segera diproses ya kak. Terima kasih!`;
 
             const whatsappUrl = `https://wa.me/${targetWA}?text=${encodeURIComponent(message)}`;
 
