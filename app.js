@@ -369,21 +369,58 @@
             selectPaymentMethod(null);
         }
 
-        function updateDeliverySubOptions() {
-            const place = document.getElementById('deliveryPlace');
-            const wrap = document.getElementById('deliverySubPlaceWrap');
-            const sub = document.getElementById('deliverySubPlace');
-            if (!place || !wrap || !sub) return;
+        // MENGATUR SUB PILIHAN TEMPAT KIRIM
+function updateDeliverySubOptions() {
 
-            const options = {
-                DJ2: ['Gerbang Depan', 'Gerbang Blok A', 'Gazebo'],
-                DJ3: ['Gerbang Atas', 'Gerbang Bawah', 'Gerbang Dekat Rak Sepatu', 'Gazebo']
-            };
-            const choices = options[place.value] || [];
-            sub.innerHTML = '<option value="">-- Pilih titik pengiriman --</option>' +
-                choices.map(value => `<option value="${value}">${value}</option>`).join('');
-            wrap.classList.toggle('hidden', choices.length === 0);
-        }
+    const place = document.getElementById('deliveryPlace');
+    const wrap = document.getElementById('deliverySubPlaceWrap');
+    const sub = document.getElementById('deliverySubPlace');
+
+    // Kolom deskripsi tempat lainnya
+    const otherWrap = document.getElementById('deliveryOtherPlaceWrap');
+    const otherInput = document.getElementById('deliveryOtherPlace');
+
+    if (!place || !wrap || !sub) return;
+
+    // Daftar titik pengiriman
+    const options = {
+        DJ2: [
+            'Gerbang Depan',
+            'Gerbang Blok A',
+            'Gazebo'
+        ],
+
+        DJ3: [
+            'Gerbang Atas',
+            'Gerbang Bawah',
+            'Gerbang Dekat Rak Sepatu',
+            'Gazebo'
+        ]
+    };
+
+    const choices = options[place.value] || [];
+
+    // Mengatur pilihan titik pengiriman
+    sub.innerHTML =
+        '<option value="">-- Pilih titik pengiriman --</option>' +
+        choices.map(value =>
+            `<option value="${value}">${value}</option>`
+        ).join('');
+
+    wrap.classList.toggle('hidden', choices.length === 0);
+
+    // Menampilkan deskripsi jika memilih LAINNYA
+    const isOtherPlace = place.value === 'LAINNYA';
+
+    if (otherWrap) {
+        otherWrap.classList.toggle('hidden', !isOtherPlace);
+    }
+
+    // Kosongkan deskripsi jika berpindah ke tempat lain
+    if (!isOtherPlace && otherInput) {
+        otherInput.value = '';
+    }
+}
 
         function requiresPaymentProof(method = selectedPayment) {
             return ['qris', 'split'].includes(method);
@@ -524,8 +561,20 @@
                 const place = document.getElementById('deliveryPlace').value;
                 const subWrap = document.getElementById('deliverySubPlaceWrap');
                 const subPlace = document.getElementById('deliverySubPlace').value;
+
                 if (!place) {
                     alert('Silakan pilih tempat kirim terlebih dahulu.');
+                    document.getElementById('deliveryPlace').focus();
+                    return;
+                }
+
+                // Mengambil deskripsi tempat lainnya
+                const otherPlace =
+                    document.getElementById('deliveryOtherPlace')?.value.trim() || '';
+                // WAJIB mengisi deskripsi jika memilih LAINNYA
+                if (place === 'LAINNYA' && !otherPlace) {
+                    alert('Silakan tuliskan deskripsi tempat pengiriman.');
+                    document.getElementById('deliveryOtherPlace').focus();
                     return;
                 }
                 if (subWrap && !subWrap.classList.contains('hidden') && !subPlace) {
@@ -605,8 +654,22 @@
                 const place = document.getElementById('deliveryPlace').value;
                 const subWrap = document.getElementById('deliverySubPlaceWrap');
                 const subPlace = document.getElementById('deliverySubPlace').value;
-
-                deliveryText = `Tempat Kirim: *${place}${subWrap && !subWrap.classList.contains('hidden') && subPlace ? ' - ' + subPlace : ''}*\n`;
+                // Mengambil deskripsi tempat lainnya
+                const otherPlace =
+                    document.getElementById('deliveryOtherPlace')?.value.trim() || '';
+                // Menentukan alamat akhir
+                let finalPlace = place;
+                if (place === 'LAINNYA') {
+                    finalPlace = `Lainnya - ${otherPlace}`;
+                } else if (
+                    subWrap &&
+                    !subWrap.classList.contains('hidden') &&
+                    subPlace
+                ) {
+                    finalPlace = `${place} - ${subPlace}`;
+                }
+                // Menyusun detail pengiriman WhatsApp
+                deliveryText = `Tempat Kirim: *${finalPlace}*\n`;
             }
 
             let canSharePaymentProof = false;
